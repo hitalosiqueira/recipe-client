@@ -1,10 +1,20 @@
 <div class="row">
   <div class="col-xs-12">
+    <h1>{{recipe.name}}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
     <ul class="list-group">
-      <li class="list-group-item">Porções:</li>
-      <li class="list-group-item">Calorias:</li>
-      <li class="list-group-item">Instruções:</li>
-      <li class="list-group-item">Ingredientes: </li>
+      <li class="list-group-item">Porções: {{ recipe.portions }}</li>
+      <li class="list-group-item">Calorias: {{ recipe.calories }}</li>
+      <li class="list-group-item">Instruções: {{ recipe.instructions }}</li>
+    </ul>
+    <ul class="list-group">
+      <li class="list-group-item">Ingredientes</li>
+      <li class="list-group-item" *ngFor="let ing of ingredientRecipe; let i = index">
+        {{ ingredients[i].name }} - {{ ing.amount }}
+      </li>
     </ul>
   </div>
 </div>

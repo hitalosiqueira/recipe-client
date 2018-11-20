@@ -11,6 +11,9 @@ import { RecipeNewComponent } from './recipes/recipe-new/recipe-new.component';
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import {FormsModule} from '@angular/forms';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
+import {AngularHalModule} from 'angular4-hal';
+import {ExternalConfigurationService} from './external.configuration.service';
+import {RecipeService} from './service/recipe.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,13 @@ import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AngularHalModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    RecipeService,
+    {provide: 'ExternalConfigurationService', useClass: ExternalConfigurationService}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
